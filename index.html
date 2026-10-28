@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFRIKA-LOVE 🌍</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#0A0A0A;color:#fff}
+.top{position:sticky;top:0;background:#111;border-bottom:1px solid #222;padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px}
+.logo img{width:40px;height:40px;border-radius:12px;background:#000;border:1px solid #333}
+.nav{display:flex;gap:6px}.nav button{padding:7px 12px;border-radius:20px;border:1px solid #333;background:#1a1a1a;color:#fff;font-weight:700;font-size:13px}
+.nav button.active{background:linear-gradient(135deg,#FF8A00,#FF3A6E);border:none}
+.page{padding:14px;max-width:480px;margin:0 auto}
+.card{background:#1A1A1A;border-radius:20px;padding:14px;margin-bottom:12px;border:1px solid #222}
+.card img.profil{width:100%;height:380px;object-fit:cover;border-radius:16px}
+h1{font-size:46px;font-weight:900;line-height:.85}
+.pill{background:#2a1a10;color:#FF8A4F;padding:5px 10px;border-radius:20px;font-size:12px;font-weight:800;display:inline-block;margin:5px 4px 0 0}
+.btn{width:100%;padding:13px;border-radius:14px;border:none;font-weight:800;font-size:15px}
+.btn-orange{background:linear-gradient(135deg,#FF8A00,#FF3A6E);color:#fff}.btn-black{background:#fff;color:#111}.btn-outline{background:transparent;border:1px solid #333;color:#fff}
+.row{display:flex;gap:8px;margin-top:10px}
+input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #333;background:#0f0f0f;color:#fff;margin-top:8px}
+.chatbox{height:50vh;overflow:auto;border:1px solid #222;border-radius:12px;padding:10px;background:#0f0f0f}
+.msg{padding:8px 12px;border-radius:16px;margin:6px 0;max-width:80%;font-size:14px}.me{background:linear-gradient(135deg,#FF8A00,#FF3A6E);color:#fff;margin-left:auto}.them{background:#222}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="logo"><img src="https://i.ibb.co/4gR6P9p/afrika-logo.png" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRkY4QTAwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkYzQTZFIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTTUwIDVDMjUgNSA1IDI1IDUgNTBTMjUgOTUgNTAgOTUgOTUgNzUgOTUgNTBTNzUgNSA1MCA1Wm0wIDg1QzMwIDkwIDEwIDcwIDEwIDUwUzMwIDEwIDUwIDEwUzkwIDMwIDkwIDUwUzcwIDkwIDUwIDkwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik01NSAyMEw0NSAyNSAzNSAzNSA0MCA1MCA0NSA2MCA1MCA3NSA2MCA4MCA3MCA3NSA3NSA2NSA4NSA1NSA4MCA0NSA3MCA0MCA2MCAzNSA1MCAzNSAzMCA1NSAyMFoiIGZpbGw9InVybCgjZykiLz48L3N2Zz4='"> AFRIKA-LOVE</div>
+<div class="nav">
+<button id="b1" class="active" onclick="showPage('home')">Vibe</button>
+<button id="b2" onclick="showPage('chat')">Chat</button>
+<button id="b3" onclick="showPage('profil')">Moi</button>
+</div>
+</div>
+<div id="home" class="page">
+<div class="card"><h1>Trouve ton vibe.</h1><p style="color:#999;margin:10px 0">De vraies personnes. 100% Afrique. 🌍</p><button class="btn btn-orange" onclick="showPage('profil')">Créer mon profil gratuit</button></div>
+<div id="profiles"></div>
+</div>
+<div id="chat" class="page hidden"><div class="card"><h3>💬 Messages</h3><div id="chatList"></div></div><div id="chatRoom" class="card hidden"><h4 id="chatWith"></h4><div id="messages" class="chatbox"></div><div class="row"><input id="msgInput" placeholder="Message..." onkeydown="if(event.key==='Enter')sendMsg()"><button class="btn btn-black" style="width:70px" onclick="sendMsg()">OK</button></div></div></div>
+<div id="profil" class="page hidden"><div class="card"><h3>Ton profil</h3><input id="myName" placeholder="Prénom"><select id="myCity"><option>Conakry</option><option>Kankan</option><option>Labé</option><option>Kindia</option><option>Dakar</option><option>Abidjan</option></select><select id="myGoal"><option>Amour sérieux</option><option>Amitié</option><option>Mariage</option></select><textarea id="myBio" placeholder="Bio..."></textarea><button class="btn btn-orange" style="margin-top:10px" onclick="saveProfil()">Enregistrer</button><p id="saved" style="color:#4ade80;margin-top:8px"></p></div></div>
+<script>
+let users=[{name:"Aminata",age:24,city:"Conakry",goal:"Amour sérieux",bio:"Fille simple 😊",img:"https://picsum.photos/seed/af1/500/700"},{name:"Moussa",age:27,city:"Kindia",goal:"Mariage",bio:"Entrepreneur guinéen",img:"https://picsum.photos/seed/af2/500/700"},{name:"Fatoumata",age:22,city:"Labé",goal:"Amitié",bio:"Pular de Labé",img:"https://picsum.photos/seed/af3/500/700"},{name:"Ibrahima",age:29,city:"Kankan",goal:"Amour sérieux",bio:"Je cherche ma reine",img:"https://picsum.photos/seed/af4/500/700"}];
+let likes=JSON.parse(localStorage.getItem('likes-afrika')||'[]');let myChats=JSON.parse(localStorage.getItem('chats-afrika')||'{}');let currentChat=null;
+function renderProfiles(){let div=document.getElementById('profiles');div.innerHTML='';users.forEach(u=>{let liked=likes.includes(u.name);div.innerHTML+=`<div class="card"><img class="profil" src="${u.img}"><div style="margin-top:10px"><b style="font-size:19px">${u.name}, ${u.age}</b> • ${u.city}<div><span class="pill">${u.goal}</span> <span class="pill">Vérifié ✓</span></div><p style="color:#aaa;margin-top:6px;font-size:14px">${u.bio}</p><div class="row"><button class="btn ${liked?'btn-black':'btn-outline'}" onclick="like('${u.name}')">${liked?'❤️ Liké':'🤍 Liker'}</button><button class="btn btn-orange" onclick="openChat('${u.name}')">💬 Parler</button></div></div></div>`;});}
+function like(name){if(!likes.includes(name)){likes.push(name);localStorage.setItem('likes-afrika',JSON.stringify(likes));renderProfiles();}}
+function openChat(name){showPage('chat');currentChat=name;document.getElementById('chatRoom').classList.remove('hidden');document.getElementById('chatWith').innerText='Chat avec '+name;renderMessages();renderChatList();}
+function sendMsg(){let inp=document.getElementById('msgInput');let txt=inp.value.trim();if(!txt||!currentChat)return;if(!myChats[currentChat])myChats[currentChat]=[];myChats[currentChat].push({me:true,text:txt});setTimeout(()=>{myChats[currentChat].push({me:false,text:"Coucou ❤️ Tu es d'où ?"});localStorage.setItem('chats-afrika',JSON.stringify(myChats));renderMessages();},700);localStorage.setItem('chats-afrika',JSON.stringify(myChats));inp.value='';renderMessages();renderChatList();}
+function renderMessages(){let box=document.getElementById('messages');if(!currentChat)return;box.innerHTML='';(myChats[currentChat]||[]).forEach(m=>{box.innerHTML+=`<div class="msg ${m.me?'me':'them'}">${m.text}</div>`});box.scrollTop=box.scrollHeight;}
+function renderChatList(){let list=document.getElementById('chatList');list.innerHTML='';Object.keys(myChats).forEach(name=>{let last=myChats[name].slice(-1)[0]?.text||'Nouveau';list.innerHTML+=`<div class="card" style="padding:10px;cursor:pointer" onclick="openChat('${name}')"><b>${name}</b><br><small style="color:#888">${last}</small></div>`});if(Object.keys(myChats).length===0)list.innerHTML='<small style="color:#666">Pas de messages. Like quelqu\'un !</small>';}
+function showPage(p){document.getElementById('home').classList.add('hidden');document.getElementById('chat').classList.add('hidden');document.getElementById('profil').classList.add('hidden');document.getElementById(p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));document.getElementById(p==='home'?'b1':p==='chat'?'b2':'b3').classList.add('active');if(p==='chat')renderChatList();}
+function saveProfil(){localStorage.setItem('myProfilAfrika',JSON.stringify({name:document.getElementById('myName').value,city:document.getElementById('myCity').value,goal:document.getElementById('myGoal').value,bio:document.getElementById('myBio').value}));document.getElementById('saved').innerText='✅ Profil enregistré !';}
+renderProfiles();renderChatList();
+</script>
+</body>
+</html>
